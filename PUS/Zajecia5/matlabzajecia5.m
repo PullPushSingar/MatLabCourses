@@ -44,14 +44,8 @@ Cvp = cp * rop * Vp;
 %zmianaTzew = 10;
 %Tzew0 = TzewN + zmianaTzew;
 %PODPUNKT 3
-zmianaTzew = 10;
-procent_zmiany_qg = 0.75;
-qg0 = qgN*procent_zmiany_qg;
-Tzew0 = TzewN + zmianaTzew;
 
 
-Twew0 = ((qg0*(Kcp + Kcwp))/(Kcwp*Kcw + Kcp * Kcw + Kcp * Kcwp)) + Tzew0;
-Tp0 = (Kcp*Tzew0 + Kcwp * Twew0)/(Kcwp + Kcp);
 
 
 M = [(Cvw*Cvp) (Kcwp*Cvp + Kcp*Cvw + Kcw*Cvp + Kcwp*Cvp) (Kcw*Kcwp + Kcw*Kcp + Kcp*Kcwp)];
@@ -64,28 +58,179 @@ L22 = [ (Cvw*Kcp)  (Kcw*Kcp + Kcp*Kcwp + Kcwp*Kcw)];
 t_simulation = 5000;
 t0 = 500;
 
-dgq = 0.1 * qgN;
-%dgq = 0;
-dTzew = 1;
+dgq = 0;
+dTzew = 2;
+
+
+qg0 =  qgN;
+Tzew0 = TzewN;
+Twew0 = ((qg0*(Kcp + Kcwp))/(Kcwp*Kcw + Kcp * Kcw + Kcp * Kcwp)) + Tzew0;
+Tp0 = (Kcp*Tzew0 + Kcwp * Twew0)/(Kcwp + Kcp);
+
+
+t_simulation = 5000;
+t0 = 500;
+%podpunkt 2
+%qg0 = qg0 + (randn(1,1) * 100 - 50);
+%Tzew0 = Tzew0 + (randn(1,1) * 2 - 1);
+%zajecia
+%dgq = 0.1 * qgN;
 
 
 
 
-sim("C:\Users\huber\Documents\MATLAB\Zajecia5\simulinkzajecia4.slx");
+
+
+sim("zajecia4simulink");
+
+figure();
+hold on;
+subplot(211)
+plot(t,Tp,"r");
+grid on
+
+hold on;
+subplot(212)
+plot(t,Twew,"r");
+grid on
+
+
+qg0 =   qgN;
+Tzew0 = TzewN + 5;
+Twew0 = ((qg0*(Kcp + Kcwp))/(Kcwp*Kcw + Kcp * Kcw + Kcp * Kcwp)) + Tzew0;
+Tp0 = (Kcp*Tzew0 + Kcwp * Twew0)/(Kcwp + Kcp);
+
+sim("zajecia4simulink");
 
 hold on;
 subplot(211)
-disp(t)
-disp(Tp)
-plot(t,Tp,"r");
+plot(t,Tp,"g");
 grid on
-title("Tp = f(t)");
-ylabel("Tp[K]");
-xlabel("czas[t]");
+
 hold on;
 subplot(212)
 plot(t,Twew,"g");
 grid on
-title("Twew = f(t)");
+
+
+qg0 =  0.6 * qgN;
+Tzew0 = TzewN + 5;
+Twew0 = ((qg0*(Kcp + Kcwp))/(Kcwp*Kcw + Kcp * Kcw + Kcp * Kcwp)) + Tzew0;
+Tp0 = (Kcp*Tzew0 + Kcwp * Twew0)/(Kcwp + Kcp);
+
+sim("zajecia4simulink");
+
+hold on;
+subplot(211)
+plot(t,Tp,"b");
+grid on
+title("Odpowiedz skokowa Tp = f(t) skok dTzew = 2");
+%title("Odpowiedz skokowa Tp = f(t)")
+ylabel("Tp[K]");
+xlabel("czas[t]");
+hold on;
+legend("qg0 = qgN, Tzew0 = TzewN", "qg0 = qgN, Tzew0 = TzewN + 5", "qg0 = 0.6*gqN, Tzew0 = TzewN + 5")
+%legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
+%    "qg0 = qgN, Tzew0 = TzewN + 5dqg = 0, dTzew = 2 ", ...
+%    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2")
+subplot(212)
+plot(t,Twew,"b");
+grid on
+title("Odpowiedz skokowa Twew = f(t) skok dTzew = 2");
+%title("Odpowiedz skokowa Twew = f(t)")
 ylabel("Twew[K]");
 xlabel("czas[t]");
+legend("qg0 = qgN, Tzew0 = TzewN", "qg0 = qgN, Tzew0 = TzewN + 5", "qg0 = 0.6*gqN, Tzew0 = TzewN + 5")
+%legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
+%    "qg0 = qgN, Tzew0 = TzewN + 5dqg = 0, dTzew = 2 ",...
+%    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2")
+
+
+dgq = 0.2*qgN;
+dTzew = 0;
+
+qg0 =   qgN;
+Tzew0 =  TzewN;
+Twew0 = ((qg0*(Kcp + Kcwp))/(Kcwp*Kcw + Kcp * Kcw + Kcp * Kcwp)) + Tzew0;
+Tp0 = (Kcp*Tzew0 + Kcwp * Twew0)/(Kcwp + Kcp);
+
+
+
+sim("zajecia4simulink");
+
+hold on;
+subplot(211)
+plot(t,Tp,"c");
+grid on
+
+hold on;
+subplot(212)
+plot(t,Twew,"c");
+grid on
+
+
+
+qg0 =   qgN;
+Tzew0 = TzewN + 5;
+Twew0 = ((qg0*(Kcp + Kcwp))/(Kcwp*Kcw + Kcp * Kcw + Kcp * Kcwp)) + Tzew0;
+Tp0 = (Kcp*Tzew0 + Kcwp * Twew0)/(Kcwp + Kcp);
+
+sim("zajecia4simulink");
+
+hold on;
+subplot(211)
+plot(t,Tp,"m");
+grid on
+
+hold on;
+subplot(212)
+plot(t,Twew,"m");
+grid on
+
+
+qg0 =  0.6*qgN;
+Tzew0 = TzewN + 5;
+Twew0 = ((qg0*(Kcp + Kcwp))/(Kcwp*Kcw + Kcp * Kcw + Kcp * Kcwp)) + Tzew0;
+Tp0 = (Kcp*Tzew0 + Kcwp * Twew0)/(Kcwp + Kcp);
+
+sim("zajecia4simulink");
+
+hold on;
+
+
+subplot(211)
+plot(t,Tp,"k");
+grid on
+%title("Odpowiedz skokowa Tp = f(t), odpowiedz na skok dqg");
+title("Odpowiedz skokowa Tp = f(t)");
+ylabel("Tp[K]");
+xlabel("czas[t]");
+
+legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
+    "qg0 = qgN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2 ", ...
+    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2",...
+    "qg0 = qgN, Tzew0 = TzewN, dqg = 0.1 * qgN, dTzew = 0 ",...
+    "qg0 = qgN, Tzew0 = TzewN + 5, dqg = 0.1 * qgN, dTzew = 0",...
+    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0.1 * qgN, dTzew = 0")
+%legend("qg0 = qgN, Tzew0 = TzewN", "qg0 = qgN, Tzew0 = TzewN + 5", "qg0 = 0.6*gqN, Tzew0 = TzewN + 5")
+hold on;
+subplot(212)
+plot(t,Twew,"k");
+grid on
+%title("Odpowiedz skokowa Twew = f(t), odpowiedz na skok dqg");
+title("Odpowiedz skokowa Twew = f(t)");
+ylabel("Twew[K]");
+xlabel("czas[t]");
+%legend("qg0 = qgN, Tzew0 = TzewN", "qg0 = qgN, Tzew0 = TzewN + 5", "qg0 = 0.6*gqN, Tzew0 = TzewN + 5")
+%legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
+%    "qg0 = qgN, Tzew0 = TzewN + 5dqg = 0, dTzew = 2 ",...
+%    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2")
+legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
+    "qg0 = qgN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2 ", ...
+    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2",...
+    "qg0 = qgN, Tzew0 = TzewN, dqg = 0.1 * qgN, dTzew = 0 ",...
+    "qg0 = qgN, Tzew0 = TzewN + 5, dqg = 0.1 * qgN, dTzew = 0",...
+    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0.1 * qgN, dTzew = 0")
+%legend("qg0 = qgN, Tzew0 = TzewN", "qg0 = qgN, Tzew0 = TzewN + 5", "qg0 = 0.6*gqN, Tzew0 = TzewN + 5")
+
+

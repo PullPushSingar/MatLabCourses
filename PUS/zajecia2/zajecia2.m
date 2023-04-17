@@ -10,10 +10,8 @@ TzewN = -20;
 TwewN = 20;
 TpN = 10;
 
-
 % wspolczynnik 'a'
 a = 0.25;
-
 
 % identyfikacja parametrow statycznych
 Kcw =  qgN/(TwewN * (1 + a) - TzewN - a * TpN);
@@ -35,14 +33,13 @@ Tp0 = (Kcp*Tzew(i) + Kcwp * Twew0)/(Kcwp + Kcp);
 
 
 subplot(221);
-title("Twew0 = f(qg0)");
-xlabel("qg0")
-ylabel("Twew0")
+title("Twew = f(qg)");
+xlabel("qg")
+ylabel("Twew")
 hold on;
 grid on;
 
 plot(qg0,Twew0);
-plot(qgN,TwewN,'ro');
 
 %legend
 
@@ -54,19 +51,15 @@ hold on;
 grid on;
 
 plot(Tzew,Twew0);
-plot(TzewN,TwewN,'ro');
-
 
 subplot(223)
-title("Tp = f(g)")
-xlabel("Qg")
+title("Tp = f(qg)")
+xlabel("qg")
 ylabel("Tp")
 hold on;
 grid on;
 
 plot(qg0,Tp0);
-plot(qgN,TpN,'ro');
-
 
 subplot(224)
 title("Tp = f(Tzew)")
@@ -76,10 +69,28 @@ hold on;
 grid on;
 
 plot(Tzew,Tp0);
-plot(TzewN,TpN,'ro');
-
-
 
 end
-legend
 
+subplot(221);
+hold on;
+grid on;
+plot(qgN,TwewN,'ro');
+legend ("gq = 0","gq = 1000","gq = 2000","gq = 3000","gq = 4000", ...
+    "gq = 5000","gq = 6000","gq = 7000","gq = 8000","gq = 9000","gq = 10000","Punkt Nominalny")
+subplot(222)
+hold on;
+grid on;
+plot(TzewN,TwewN,'ro');
+legend ("Tzew = -20","Tzew = -16","Tzew = -12","Tzew = -8","Tzew = -4", ...
+    "Tzew = 0","Tzew = 4","Tzew = 8","Tzew = 12","Tzew = 16","Tzew = 20","Punkt Nominalny")
+subplot(223)
+hold on;
+grid on;
+plot(qgN,TpN,'ro');
+legend ("gq = 0","gq = 1000","gq = 2000","gq = 3000","gq = 4000", ...
+    "gq = 5000","gq = 6000","gq = 7000","gq = 8000","gq = 9000","gq = 10000","Punkt Nominalny")
+subplot(224)
+plot(TzewN,TpN,'ro');
+legend ("Tzew = -20","Tzew = -16","Tzew = -12","Tzew = -8","Tzew = -4", ...
+    "Tzew = 0","Tzew = 4","Tzew = 8","Tzew = 12","Tzew = 16","Tzew = 20","Punkt Nominalny")
