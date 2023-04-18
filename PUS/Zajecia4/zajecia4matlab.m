@@ -52,8 +52,7 @@ t0 = 500;
 %zajecia
 %dgq = 0.1 * qgN;
 
-dgq = 0;
-dTzew = 2;
+
 
 
 qg0 =  qgN;
@@ -66,13 +65,13 @@ sim("zajecia4simulink");
 
 figure();
 hold on;
-subplot(211)
-plot(t,Tp,"r");
+subplot(221)
+plot(t,Tp - Tp0,"r");
 grid on
 
 hold on;
-subplot(212)
-plot(t,Twew,"r");
+subplot(222)
+plot(t,Twew - Twew0,"r");
 grid on
 
 
@@ -84,15 +83,14 @@ Tp0 = (Kcp*Tzew0 + Kcwp * Twew0)/(Kcwp + Kcp);
 sim("zajecia4simulink");
 
 hold on;
-subplot(211)
-plot(t,Tp,"g");
+subplot(221)
+plot(t,Tp - Tp0,"g");
 grid on
 
 hold on;
-subplot(212)
-plot(t,Twew,"g");
+subplot(222)
+plot(t,Twew - Twew0,"g");
 grid on
-
 
 qg0 =  0.6 * qgN;
 Tzew0 = TzewN + 5;
@@ -102,32 +100,32 @@ Tp0 = (Kcp*Tzew0 + Kcwp * Twew0)/(Kcwp + Kcp);
 sim("zajecia4simulink");
 
 hold on;
-subplot(211)
-plot(t,Tp,"b");
+subplot(221)
+plot(t,Tp - Tp0,"b");
 grid on
 title("Odpowiedz skokowa Tp = f(t) skok dTzew = 2");
 %title("Odpowiedz skokowa Tp = f(t)")
-ylabel("Tp[K]");
-xlabel("czas[t]");
+ylabel("Tp[℃]");
+xlabel("czas[s]");
 hold on;
-legend("qg0 = qgN, Tzew0 = TzewN", "qg0 = qgN, Tzew0 = TzewN + 5", "qg0 = 0.6*gqN, Tzew0 = TzewN + 5")
-%legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
-%    "qg0 = qgN, Tzew0 = TzewN + 5dqg = 0, dTzew = 2 ", ...
-%    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2")
-subplot(212)
-plot(t,Twew,"b");
+%legend("qg0 = qgN, Tzew0 = TzewN", "qg0 = qgN, Tzew0 = TzewN + 5", "qg0 = 0.6*gqN, Tzew0 = TzewN + 5")
+legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
+    "qg0 = qgN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2 ", ...
+    "qg0 = 0.6*qgN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2")
+subplot(222)
+plot(t,Twew - Twew0,"b");
 grid on
 title("Odpowiedz skokowa Twew = f(t) skok dTzew = 2");
 %title("Odpowiedz skokowa Twew = f(t)")
-ylabel("Twew[K]");
-xlabel("czas[t]");
-legend("qg0 = qgN, Tzew0 = TzewN", "qg0 = qgN, Tzew0 = TzewN + 5", "qg0 = 0.6*gqN, Tzew0 = TzewN + 5")
-%legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
-%    "qg0 = qgN, Tzew0 = TzewN + 5dqg = 0, dTzew = 2 ",...
-%    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2")
+ylabel("Twew[℃]");
+xlabel("czas[s]");
+%legend("qg0 = qgN, Tzew0 = TzewN", "qg0 = qgN, Tzew0 = TzewN + 5", "qg0 = 0.6*gqN, Tzew0 = TzewN + 5")
+legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
+    "qg0 = qgN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2 ",...
+    "qg0 = 0.6*qgN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2")
 
 
-dgq = 0.2*qgN;
+dgq = 0.1*qgN;
 dTzew = 0;
 
 qg0 =   qgN;
@@ -139,13 +137,13 @@ Tp0 = (Kcp*Tzew0 + Kcwp * Twew0)/(Kcwp + Kcp);
 sim("zajecia4simulink");
 
 hold on;
-subplot(211)
-plot(t,Tp,"c");
+subplot(223)
+plot(t,Tp - Tp0,"r");
 grid on
 
 hold on;
-subplot(212)
-plot(t,Twew,"c");
+subplot(224)
+plot(t,Twew - Twew0,"r");
 grid on
 
 
@@ -158,13 +156,13 @@ Tp0 = (Kcp*Tzew0 + Kcwp * Twew0)/(Kcwp + Kcp);
 sim("zajecia4simulink");
 
 hold on;
-subplot(211)
-plot(t,Tp,"m");
+subplot(223)
+plot(t,Tp - Tp0,"g");
 grid on
 
 hold on;
-subplot(212)
-plot(t,Twew,"m");
+subplot(224)
+plot(t,Twew - Twew0,"g");
 grid on
 
 
@@ -178,41 +176,30 @@ sim("zajecia4simulink");
 hold on;
 
 
-subplot(211)
-plot(t,Tp,"k");
+subplot(223)
+plot(t,Tp - Tp0,"b");
 grid on
-%title("Odpowiedz skokowa Tp = f(t), odpowiedz na skok dqg");
-title("Odpowiedz skokowa Tp = f(t)");
-ylabel("Tp[K]");
-xlabel("czas[t]");
+title("Odpowiedz skokowa Tp = f(t), odpowiedz na skok dqg = 0.1 * qg");
+%title("Odpowiedz skokowa Tp = f(t)");
+ylabel("Tp[℃]");
+xlabel("czas[s]");
 
-legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
-    "qg0 = qgN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2 ", ...
-    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2",...
-    "qg0 = qgN, Tzew0 = TzewN, dqg = 0.1 * qgN, dTzew = 0 ",...
-    "qg0 = qgN, Tzew0 = TzewN + 5, dqg = 0.1 * qgN, dTzew = 0",...
-    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0.1 * qgN, dTzew = 0")
-%legend("qg0 = qgN, Tzew0 = TzewN",...
-% "qg0 = qgN, Tzew0 = TzewN + 5", ...
-% "qg0 = 0.6*gqN, Tzew0 = TzewN + 5")
+
+legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0.1*qg, dTzew = 0 ",...
+    "qg0 = qgN, Tzew0 = TzewN + 5d, dqg = 0.1*qg, dTzew = 0 ",...
+    "qg0 = 0.6*qgN, Tzew0 = TzewN + 5, dqg = 0.1*qg, dTzew = 0")
 hold on;
-subplot(212)
-plot(t,Twew,"k");
+subplot(224)
+plot(t,Twew - Twew0,"b");
 grid on
-%title("Odpowiedz skokowa Twew = f(t), odpowiedz na skok dqg");
-title("Odpowiedz skokowa Twew = f(t)");
-ylabel("Twew[K]");
-xlabel("czas[t]");
-%legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
-%    "qg0 = qgN, Tzew0 = TzewN + 5dqg = 0, dTzew = 2 ",...
-%    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2")
-legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0, dTzew = 2 ",...
-    "qg0 = qgN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2 ", ...
-    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0, dTzew = 2",...
-    "qg0 = qgN, Tzew0 = TzewN, dqg = 0.1 * qgN, dTzew = 0 ",...
-    "qg0 = qgN, Tzew0 = TzewN + 5, dqg = 0.1 * qgN, dTzew = 0",...
-    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0.1 * qgN, dTzew = 0")
-%legend("qg0 = qgN, Tzew0 = TzewN", "qg0 = qgN, Tzew0 = TzewN + 5", "qg0 = 0.6*gqN, Tzew0 = TzewN + 5")
+title("Odpowiedz skokowa Twew = f(t), odpowiedz na skok dqg = 0.1 * qg");
+%title("Odpowiedz skokowa Twew = f(t)");
+ylabel("Twew[℃]");
+xlabel("czas[s]");
+legend("qg0 = qgN, Tzew0 = TzewN, dqg = 0.1*qg, dTzew = 0 ",...
+    "qg0 = qgN, Tzew0 = TzewN + 5d, dqg = 0.1*qg, dTzew = 0 ",...
+    "qg0 = 0.6*gqN, Tzew0 = TzewN + 5, dqg = 0.1*qg, dTzew = 0")
+
 
 
 
