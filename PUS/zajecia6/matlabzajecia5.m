@@ -64,6 +64,11 @@ L22 = [ (Cvw*Kcp)  (Kcw*Kcp + Kcp*Kcwp + Kcwp*Kcw)];
 t_simulation = 5000;
 t0 = 500;
 
+
+T0Tp = 565.672;
+TTp = 1323.868;
+K0Tp = 0.003;
+
 dgq = 0.1 * qgN;
 %dgq = 0;
 dTzew = 1;
@@ -72,6 +77,13 @@ Lm11 = L11;
 Lm21 = L21;
 
 Mm = M;
+
+K = 0.003;
+Kp = (0.9*T0Tp)/(K*50);
+tp = 3.33 * 65.672;
+Ki = Kp/tp;
+Ti = tp/Kp;
+
 
 
 
