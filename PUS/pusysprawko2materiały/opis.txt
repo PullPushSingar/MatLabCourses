@@ -1,0 +1,36 @@
+zajecia 6
+Identyfkacja
+Na wykładzie na identyfikacji masz dwie metody indetyfikacji styczną i metodą dwupunktową
+robisz obydwie metody i porównujesz na screenach u mnie też masz to pokazane jak ja robiłem
+
+zajecia 7
+Nastawy
+Największe gówno na całych labach jak narazie
+Ogólnie na którymś tam wykładzie u czemplik masz nastawy ziglera nicolsa
+na podstawie poprzedniech metod intedyfikacji masz zrobić regulacje regulatorem PID
+Ogólnie dużo zabawy było żeby wgl ten układ mi zadziałał.
+Regulesz model uzyskany za pomocą jednej z metod z terminu 6 oraz dla obiektu czyli
+to co było chyba na 3/4 labach i poprostu robisz regulator.
+
+zajęcia 8
+Wskazniki jakości
+Chyba najprzyjemniejsze zajęcia ale masz tam tylko screena
+ona na zajęciach dawała taki rysunek i trzeba było podpisać co jest co na rysunku
+czego ona tam wymagała w razie czego znajdziesz też dużo rzeczu u czemplik na wykładzie
+oraz jeszcze wyskaznik jaki zrobić 
+
+zajęcia 9 
+Tutaj porównywało się nastawy obliczone przez nas oraz te które nam matlab ogarnął.
+Masz bloczek pid Tuner i klikasz tune musisz tylko właście regulator wybrać 
+i mieć chyba rozszerzenie "control panel" czy jakoś tak zainstalowane mieć
+
+zajęcia 10
+Tutaj masz głownie charakterystyki bodego i nyquista więc też dużej filozofii w tym nie było
+
+niedzialace7aletrzebatozrobic
+ogolnie mi nie działało 7 więc szedłem dalej z materiałem i tutaj masz zrobione oraz PID tunery
+co to innych rzeczy to np w 7 masz nyquista i bodego zrobionego bo nie ogarnąłem jeszcze wyświetlania tego
+ale w simulinku na scopach niby wszystko git
+
+to chyba wszystko powodzonka
+
