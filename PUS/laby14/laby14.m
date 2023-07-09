@@ -28,7 +28,7 @@ for i = 1:length(max_arr)
     figure(1)
     hold on;
     grid on;
-    subplot(2,2,1)
+    subplot(2,3,1)
     hold on;
     plot(t,y0)
     title("y(t) bez opoznienia")
@@ -36,7 +36,7 @@ for i = 1:length(max_arr)
     ylabel("y")
     
     legend("Histereza += 0.1","Histereza += 0.2","Histereza += 0.4")
-    subplot(2,2,2)
+    subplot(2,3,2)
     hold on;
     plot(t,y1);
     title("y(t) z opoznieniem")
@@ -44,7 +44,7 @@ for i = 1:length(max_arr)
     ylabel("y")
     legend("Histereza += 0.1","Histereza += 0.2","Histereza += 0.4")
 
-    subplot(2,2,3)
+    subplot(2,3,3)
     hold on;
     grid on;
     hold on;
@@ -54,15 +54,26 @@ for i = 1:length(max_arr)
     xlabel("czas[t]")
     legend("Histereza += 0.1","Histereza += 0.2","Histereza += 0.4")
     hold on;
-    subplot(2,2,4)
+    subplot(2,3,4)
     plot(t,e1);
     title("e(t) z opoznieniem")
     ylabel("e")
     xlabel("czas[t]")
     legend("Histereza += 0.1","Histereza += 0.2","Histereza += 0.4")
 
+  
+  
+
+    
+
 
 end
+
+  subplot(2,3,5)
+    plot(t,SP);
+    title("SP")
+    ylabel("SP")
+    xlabel("czas[t]")
 
 % sim("C:\Users\huber\Documents\MATLAB\laby14\simlab14.slx")
 % 
